@@ -207,7 +207,7 @@ export default function App({ route, navigation }) {
 									style={{
 										fontSize: 30,
 										fontFamily: 'HelveticaBold',
-										color: darkMode ? '#fff' : '#222',
+										color: '#222',
 										marginTop: 10
 									}}
 								>

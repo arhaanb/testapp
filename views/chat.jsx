@@ -29,6 +29,8 @@ export default function App({ route, navigation }) {
 	const [loading, setLoading] = React.useState(true)
 	const [darkMode, setDarkMode] = React.useState(false)
 
+	const arrtest = [0, 1, 2]
+
 	const onRefresh = React.useCallback(() => {
 		setRefreshing(true)
 		getToken('spotifyAccessToken').then((token) => {
@@ -141,67 +143,19 @@ export default function App({ route, navigation }) {
 										}}
 										source={require('../assets/brand.png')}
 									/>
-									<TouchableOpacity
-									// onPress={() => {
-									// 	if (darkMode) {
-									// 		saveToken('theme', 'light')
-									// 	} else {
-									// 		saveToken('theme', 'dark')
-									// 	}
-									// 	setDarkMode(!darkMode)
-									// }}
-									>
-										{darkMode ? (
-											<View
+									<TouchableOpacity>
+										<View>
+											<Image
 												style={{
-													height: 30,
-													width: 30,
-													display: 'flex',
-													justifyContent: 'center',
-													alignItems: 'center',
-													backgroundColor: '#666666',
-													marginBottom: 8,
-													borderRadius: 4
+													height: 40,
+													width: 40,
+													borderRadius: 20
 												}}
-											>
-												<Image
-													style={{
-														height: 15,
-														width: 15
-													}}
-													source={require('../assets/sun.png')}
-												/>
-											</View>
-										) : (
-											<View
-												style={
-													{
-														// opacity: 0.75,
-														// height: 30,
-														// width: 30,
-														// display: 'flex',
-														// justifyContent: 'center',
-														// alignItems: 'center',
-														// backgroundColor: '#eaeaea',
-														// marginBottom: 8,
-														// borderRadius: 4
-													}
-												}
-											>
-												<Image
-													style={{
-														height: 40,
-														width: 40,
-														borderRadius: 20
-														// marginBottom: 10
-													}}
-													source={{
-														uri: 'https://arhaanbahadur.co/me.jpeg'
-													}}
-													// source={require('../assets/moon.png')}
-												/>
-											</View>
-										)}
+												source={{
+													uri: 'https://arhaanbahadur.co/me.jpeg'
+												}}
+											/>
+										</View>
 									</TouchableOpacity>
 								</View>
 								<Text
@@ -220,12 +174,95 @@ export default function App({ route, navigation }) {
 										lineHeight: 23,
 										fontFamily: 'HelveticaReg',
 										color: '#AFAFAF',
-										marginBottom: 30
+										marginBottom: 20
 									}}
 								>
 									Here are your text threads.
 								</Text>
-								{friendData.map((c) => {
+
+								<View>
+									{arrtest.map((msg, index) => {
+										return (
+											<TouchableOpacity
+												key={index}
+												style={{
+													display: 'flex',
+													flexDirection: 'row',
+													justifyContent: 'space-between',
+													alignItems: 'center',
+													paddingVertical: 20,
+													paddingHorizontal: 20,
+													backgroundColor: '#fff',
+													borderTopEndRadius: index + 1 == 1 ? 10 : 0,
+													borderTopStartRadius: index + 1 == 1 ? 10 : 0,
+													borderBottomStartRadius:
+														index + 1 == arrtest.length ? 10 : 0,
+													borderBottomEndRadius:
+														index + 1 == arrtest.length ? 10 : 0,
+													borderBottomColor: '#eaeaea',
+													borderBottomWidth:
+														index + 1 == arrtest.length ? 0 : 0.5,
+													borderTopColor: '#eaeaea',
+													borderTopWidth: index + 1 == 1 ? 0 : 0.5
+												}}
+											>
+												<View
+													style={{
+														display: 'flex',
+														flexDirection: 'row',
+														justifyContent: 'flex-start',
+														alignItems: 'center'
+													}}
+												>
+													<Image
+														style={{
+															height: 50,
+															width: 50,
+															// resizeMode: 'contain',
+															borderRadius: 1000,
+															marginRight: 15
+														}}
+														source={{
+															uri: 'https://cdn-images-1.medium.com/max/1600/1*SkFEBcaoea9WXIdQg2GsTw.png'
+														}}
+													/>
+													<View>
+														<Text
+															style={{
+																fontSize: 17,
+																fontFamily: 'HelveticaBold',
+																color: '#222'
+															}}
+														>
+															Arhaan Bahadur
+														</Text>
+														<Text
+															style={{
+																fontSize: 15,
+																fontFamily: 'HelveticaBold',
+																color: '#222',
+																opacity: 0.5
+															}}
+														>
+															arhaanb
+														</Text>
+													</View>
+												</View>
+												<Text
+													style={{
+														fontSize: 17,
+														fontFamily: 'HelveticaReg',
+														color: '#7a7a7a',
+														marginRight: 10
+													}}
+												>
+													&rarr;
+												</Text>
+											</TouchableOpacity>
+										)
+									})}
+								</View>
+								{/* {friendData.map((c) => {
 									return (
 										<View key={c.username}>
 											<TouchableOpacity
@@ -239,18 +276,6 @@ export default function App({ route, navigation }) {
 												}}
 											>
 												<View>
-													{/* <Image
-												style={{
-													height: wp('9%') * 5.2,
-													width: wp('16%') * 5.2,
-													// resizeMode: 'contain',
-													marginBottom: 5,
-													borderRadius: 7.5
-												}}
-												source={{
-													uri: 'https://res.cloudinary.com/arhaanb/image/upload/delhidesignfoundry.png'
-												}}
-											/> */}
 
 													<Image
 														style={{
@@ -278,7 +303,6 @@ export default function App({ route, navigation }) {
 														marginTop: 10
 													}}
 												>
-													{/* {JSON.stringify(c)} */}
 													{c?.name}
 												</Text>
 												<Text
@@ -290,7 +314,6 @@ export default function App({ route, navigation }) {
 														opacity: 0.5
 													}}
 												>
-													{/* {JSON.stringify(c?.icon)} */}
 													{c?.tagline}
 												</Text>
 
@@ -304,7 +327,6 @@ export default function App({ route, navigation }) {
 														opacity: 0.5
 													}}
 												>
-													{/* {JSON.stringify(c)} */}
 													{c?.investment?.goal
 														? `Goal: $${c?.investment?.goal}`
 														: null}
@@ -312,9 +334,9 @@ export default function App({ route, navigation }) {
 											</TouchableOpacity>
 										</View>
 									)
-								})}
+								})} */}
 
-								<TouchableOpacity
+								{/* <TouchableOpacity
 									onPress={() => {
 										deleteTokens()
 										navigation.navigate('Home')
@@ -330,57 +352,7 @@ export default function App({ route, navigation }) {
 									>
 										Logout
 									</Text>
-								</TouchableOpacity>
-								{/* 
-						<Text
-						style={{
-							fontSize: 12,
-								fontFamily: 'HelveticaReg',
-								color: darkMode ? '#969696' : '#5a5a5a'
-							}}
-							>
-							Made with{' '}
-							<Image
-								style={{
-									height: 18,
-									width: 18
-								}}
-								source={require('../assets/heart.png')}
-								/>{' '}
-								by{' '}
-								<Text
-								onPress={() => {
-									Linking.openURL(
-										link ? link : 'https://open.spotify.com/user/arhaanb'
-										)
-									}}
-									style={{ textDecorationLine: 'underline' }}
-									>
-									Arhaan Bahadur
-									</Text>
-								</Text> */}
-
-								{/* <Text
-							style={{
-								fontSize: 10,
-								fontFamily: 'HelveticaReg',
-								color: darkMode ? '#787878' : '#5a5a5a',
-								marginTop: 15
-							}}
-							>
-							v{appdata?.expo?.version ? appdata?.expo?.version : '0.0.0'}{' '}
-							Spotivity
-							</Text>
-							<Text
-							style={{
-								fontSize: 10,
-								fontFamily: 'HelveticaReg',
-								color: darkMode ? '#787878' : '#5a5a5a',
-								marginTop: 0
-							}}
-							>
-							This app is not affiliated with Spotify
-						</Text> */}
+								</TouchableOpacity> */}
 							</View>
 						</View>
 					</View>

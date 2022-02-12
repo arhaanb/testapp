@@ -23,6 +23,7 @@ import { StatusBar } from 'expo-status-bar'
 import NavLayout from './layouts/nav'
 import AutoHeightImage from 'react-native-auto-height-image'
 import investbg from '../assets/investbg.png'
+import InvestCard from './components/invested.jsx'
 
 export default function App({ route, navigation }) {
 	const [refreshing, setRefreshing] = React.useState(false)
@@ -104,6 +105,7 @@ export default function App({ route, navigation }) {
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 				style={{ backgroundColor: '#F4F9F5' }}
+				overScrollMode={'never'}
 			>
 				{/* {darkMode ? (
 					<StatusBar style="light" backgroundColor={'#16DB93'} />
@@ -122,7 +124,7 @@ export default function App({ route, navigation }) {
 						<View
 							style={{
 								paddingTop: hp('7%'),
-								marginBottom: 20,
+								// marginBottom: 20,
 								paddingHorizontal: 35
 							}}
 						>
@@ -257,20 +259,91 @@ export default function App({ route, navigation }) {
 								</TouchableOpacity>
 							</View>
 
-							<View style={{ marginTop: 30 }}>
+							<View style={{ marginTop: 20 }}>
 								<Text
 									style={{
 										fontSize: 18,
 										lineHeight: 23,
 										fontFamily: 'HelveticaBold',
 										color: '#222',
-										marginBottom: 30
+										marginBottom: 12.5
 									}}
 								>
 									Invested Projects
 								</Text>
 							</View>
-							{friendData.map((c) => {
+						</View>
+
+						<ScrollView
+							contentContainerStyle={{
+								paddingLeft: 35,
+							}}
+							horizontal={true}
+							showsHorizontalScrollIndicator={false}
+							showsVerticalScrollIndicator={false}
+							overScrollMode={'never'}
+						>
+							<View
+								style={{
+									display: 'flex',
+									flexDirection: 'row',
+									// justifyContent: 'flex-start',
+									// alignItems: 'center'
+									paddingRight: 35
+								}}
+							>
+								<View style={{ marginRight: 15 }}>
+									<InvestCard />
+								</View>
+								<View>
+									<InvestCard />
+								</View>
+							</View>
+						</ScrollView>
+
+						<View style={{ marginTop: 30, paddingHorizontal: 35 }}>
+							<Text
+								style={{
+									fontSize: 18,
+									lineHeight: 23,
+									fontFamily: 'HelveticaBold',
+									color: '#222',
+									marginBottom: 12.5
+								}}
+							>
+								Your Companies
+							</Text>
+						</View>
+
+						<ScrollView
+							contentContainerStyle={{
+								paddingLeft: 35,
+								marginBottom: 30
+							}}
+							horizontal={true}
+							showsHorizontalScrollIndicator={false}
+							showsVerticalScrollIndicator={false}
+							overScrollMode={'never'}
+						>
+							<View
+								style={{
+									display: 'flex',
+									flexDirection: 'row',
+									// justifyContent: 'flex-start',
+									// alignItems: 'center'
+									paddingRight: 35
+								}}
+							>
+								<View style={{ marginRight: 15 }}>
+									<InvestCard />
+								</View>
+								<View>
+									<InvestCard />
+								</View>
+							</View>
+						</ScrollView>
+
+						{/* {friendData.map((c) => {
 								return (
 									<View key={c.username}>
 										<TouchableOpacity
@@ -284,19 +357,6 @@ export default function App({ route, navigation }) {
 											}}
 										>
 											<View>
-												{/* <Image
-												style={{
-													height: wp('9%') * 5.2,
-													width: wp('16%') * 5.2,
-													// resizeMode: 'contain',
-													marginBottom: 5,
-													borderRadius: 7.5
-												}}
-												source={{
-													uri: 'https://res.cloudinary.com/arhaanb/image/upload/delhidesignfoundry.png'
-												}}
-											/> */}
-
 												<Image
 													style={{
 														height: wp('5%') * 5.2,
@@ -323,7 +383,6 @@ export default function App({ route, navigation }) {
 													marginTop: 10
 												}}
 											>
-												{/* {JSON.stringify(c)} */}
 												{c?.name}
 											</Text>
 											<Text
@@ -335,7 +394,6 @@ export default function App({ route, navigation }) {
 													opacity: 0.5
 												}}
 											>
-												{/* {JSON.stringify(c?.icon)} */}
 												{c?.tagline}
 											</Text>
 
@@ -349,7 +407,6 @@ export default function App({ route, navigation }) {
 													opacity: 0.5
 												}}
 											>
-												{/* {JSON.stringify(c)} */}
 												{c?.investment?.goal
 													? `Goal: $${c?.investment?.goal}`
 													: null}
@@ -357,9 +414,20 @@ export default function App({ route, navigation }) {
 										</TouchableOpacity>
 									</View>
 								)
-							})}
-
+							})} */}
+						<View style={{ paddingHorizontal: 35, marginBottom: 20 }}>
 							<TouchableOpacity
+								style={{
+									borderColor: '#cf4944',
+									borderWidth: 1,
+									paddingVertical: 15.65,
+									paddingHorizontal: 25,
+									borderRadius: 10,
+									display: 'flex',
+									flexDirection: 'row',
+									justifyContent: 'space-between',
+									alignItems: 'center'
+								}}
 								onPress={() => {
 									deleteTokens()
 									navigation.navigate('Home')
@@ -367,13 +435,23 @@ export default function App({ route, navigation }) {
 							>
 								<Text
 									style={{
-										fontSize: 14,
-										marginBottom: -1,
-										color: darkMode ? '#E55454' : '#cf4944',
+										fontSize: 15,
+										color: '#cf4944',
 										fontFamily: 'HelveticaReg'
 									}}
 								>
 									Logout
+								</Text>
+
+								<Text
+									style={{
+										fontSize: 15,
+										color: '#cf4944',
+										fontFamily: 'HelveticaReg',
+										marginRight: 10
+									}}
+								>
+									&rarr;
 								</Text>
 							</TouchableOpacity>
 						</View>
