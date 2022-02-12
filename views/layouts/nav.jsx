@@ -1,29 +1,5 @@
-// import React from 'react'
-
-// const Layout = ({ children }) => {
-// 	return (
-// 		<>
-// 			<div>
-// 				<ToolBar />
-// 				<Sides />
-// 				<Backdrop />
-// 			</div>
-// 			<main>{children}</main>
-// 		</>
-// 	)
-// }
-
-// export default Layout
-
 import React, { useState, useEffect } from 'react'
-import {
-	StyleSheet,
-	Text,
-	View,
-	ActivityIndicator,
-	TouchableOpacity,
-	Image
-} from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 import {
 	widthPercentageToDP as wp,
 	heightPercentageToDP as hp
@@ -32,7 +8,6 @@ import {
 export default function Layout({ children, active, navigation }) {
 	return (
 		<View style={{ flex: 1 }}>
-			{/* <Text>Hello</Text> */}
 			<View style={{ flex: 1 }}>{children}</View>
 			<View
 				style={{
@@ -48,9 +23,6 @@ export default function Layout({ children, active, navigation }) {
 					flexDirection: 'row',
 					justifyContent: 'space-around',
 					alignItems: 'center'
-					// marginBottom: 20
-					// margin: 35
-					// marginBottom: 20
 				}}
 			>
 				<TouchableOpacity onPress={() => navigation.navigate('Discover')}>
@@ -98,20 +70,3 @@ export default function Layout({ children, active, navigation }) {
 		</View>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	text: {
-		fontFamily: 'HelveticaReg',
-		width: '45%',
-		textAlign: 'center',
-		fontSize: 15,
-		lineHeight: 21,
-		marginTop: 20
-	}
-})

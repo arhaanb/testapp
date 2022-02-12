@@ -8,7 +8,6 @@ import {
 } from 'react-native-responsive-screen'
 import { useIsFocused } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
-// import Onboarding from 'react-native-onboarding-swiper'
 import AutoHeightImage from 'react-native-auto-height-image'
 import Onboard from '../../assets/onboard/2.png'
 
@@ -44,19 +43,9 @@ export default function App({ route, navigation }) {
 						paddingTop: hp('100%') >= 750 ? hp('12%') : hp('7%'),
 						height: hp('85%'),
 						marginTop: 20
-						// borderColor: '#fff',
-						// borderWidth: 1
 					}
 				]}
 			>
-				{/* <Image
-					style={{
-						height: 236 * wp('0.25%'),
-						width: 214 * wp('0.25%'),
-						marginTop: 70
-					}}
-					source={require('../../assets/onboard/2.png')}
-				/> */}
 				<View style={{ position: 'absolute', bottom: hp('5%') }}>
 					<Text
 						style={{

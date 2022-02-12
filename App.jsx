@@ -12,7 +12,6 @@ import Login from './views/login'
 import Discover from './views/discover'
 import Chat from './views/chat'
 import Profile from './views/profile'
-import Webviews from './views/webviews'
 //Onboarding
 import Two from './views/onboard/two'
 import Three from './views/onboard/three'
@@ -30,35 +29,23 @@ function App() {
 		return <AppLoading />
 	} else {
 		return (
-			// <SafeAreaView
-			// 	style={{
-			// 		flex: 1,
-			// 		backgroundColor: '#ffffff'
-			// 	}}
-			// >
-
 			<View style={{ flex: 1, backgroundColor: '#0AD98D' }}>
-				<NavigationContainer
-					// mode={'modal'}
-					style={{ backgroundColor: '#0AD98D' }}
-				>
+				<NavigationContainer style={{ backgroundColor: '#0AD98D' }}>
 					<View style={{ flex: 1, backgroundColor: '#0AD98D' }}>
 						<StatusBar style="dark" backgroundColor={'#0AD98D'} />
 						<Stack.Navigator
-							// mode={'modal'}
 							initialRouteName={Home}
 							screenOptions={{
 								headerShown: false,
 								cardStyle: { backgroundColor: '#FFFFFF', opacity: 1 }
 							}}
 						>
-							<Stack.Screen name="Home" component={Home} />
 							<Stack.Screen name="Login" component={Login} />
 							<Stack.Screen name="Discover" component={Discover} />
 							<Stack.Screen name="Chat" component={Chat} />
 							<Stack.Screen name="Profile" component={Profile} />
-							{/* <Stack.Screen name="Webviews" component={Webviews} /> */}
 							{/* onboarding screens */}
+							<Stack.Screen name="Home" component={Home} />
 							<Stack.Screen name="Two" component={Two} />
 							<Stack.Screen name="Three" component={Three} />
 						</Stack.Navigator>
@@ -66,7 +53,6 @@ function App() {
 					</View>
 				</NavigationContainer>
 			</View>
-			// </SafeAreaView>
 		)
 	}
 }

@@ -40,7 +40,6 @@ export default function App({ route, navigation }) {
 			<View
 				style={{
 					position: 'relative',
-					// height: '100%',
 					paddingVertical: hp('100%') >= 750 ? hp('12%') : hp('7%')
 				}}
 			>
@@ -55,7 +54,6 @@ export default function App({ route, navigation }) {
 								fontSize: wp('5%'),
 								fontFamily: 'HelveticaBold',
 								marginBottom: 10,
-								// lineHeight: 30,
 								opacity: 0.7
 							}}
 						>
@@ -210,15 +208,10 @@ export default function App({ route, navigation }) {
 								alignItems: 'center'
 							}}
 						>
-							{/* <Image
-								style={{ height: 25, width: 25 }}
-								source={require('../assets/spotlogo.png')}
-							/> */}
 							<Text
 								style={{
 									fontSize: 20,
 									fontFamily: 'HelveticaBold',
-									// marginLeft: 15,
 									color: '#fff'
 								}}
 							>

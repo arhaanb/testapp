@@ -143,19 +143,19 @@ export default function App({ route, navigation }) {
 										}}
 										source={require('../assets/brand.png')}
 									/>
-									<TouchableOpacity>
-										<View>
-											<Image
-												style={{
-													height: 40,
-													width: 40,
-													borderRadius: 20
-												}}
-												source={{
-													uri: 'https://arhaanbahadur.co/me.jpeg'
-												}}
-											/>
-										</View>
+									<TouchableOpacity
+										onPress={() => navigation.navigate('Profile')}
+									>
+										<Image
+											style={{
+												height: 40,
+												width: 40,
+												borderRadius: 20
+											}}
+											source={{
+												uri: 'https://arhaanbahadur.co/me.jpeg'
+											}}
+										/>
 									</TouchableOpacity>
 								</View>
 								<Text

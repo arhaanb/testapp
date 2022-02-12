@@ -7,8 +7,6 @@ import {
 	heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import { useIsFocused } from '@react-navigation/native'
-// import Onboarding from 'react-native-onboarding-swiper'
-// import { StatusBar } from 'expo-status-bar'
 
 export default function App({ route, navigation }) {
 	const isFocused = useIsFocused()
@@ -31,7 +29,6 @@ export default function App({ route, navigation }) {
 				backgroundColor: '#0AD98D'
 			}}
 		>
-			{/* <StatusBar style="dark" backgroundColor={'#0AD98D'} /> */}
 			<View
 				style={[
 					global.onboardcontainer,
@@ -39,8 +36,6 @@ export default function App({ route, navigation }) {
 						paddingTop: hp('100%') >= 750 ? hp('12%') : hp('7%'),
 						height: hp('85%'),
 						marginTop: 20
-						// borderColor: '#fff',
-						// borderWidth: 1
 					}
 				]}
 			>

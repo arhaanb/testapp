@@ -27,7 +27,6 @@ export default function App({ route, navigation }) {
 	const [refreshing, setRefreshing] = React.useState(false)
 	const [link, setLink] = React.useState(false)
 	const [loading, setLoading] = React.useState(true)
-	const [darkMode, setDarkMode] = React.useState(false)
 
 	const onRefresh = React.useCallback(() => {
 		setRefreshing(true)
@@ -49,8 +48,6 @@ export default function App({ route, navigation }) {
 			})
 			.then((res) => {
 				setFriendData(res.data)
-				// setFriendData(frnddata)
-				// Clipboard.setString(JSON.stringify(res.data.friends))
 				setLoading(false)
 				console.log('data fetched')
 			})
@@ -69,12 +66,6 @@ export default function App({ route, navigation }) {
 		})
 	}
 
-	const isFocused = useIsFocused()
-
-	// useEffect(() => {
-	// 	getInitialData()
-	// 	// getLinkData()
-	// }, [isFocused])
 	useEffect(() => {
 		getInitialData()
 	}, [])
@@ -103,12 +94,6 @@ export default function App({ route, navigation }) {
 					showsVerticalScrollIndicator={false}
 					style={{ backgroundColor: '#F4F9F5' }}
 				>
-					{/* {darkMode ? (
-					<StatusBar style="light" backgroundColor={'#16DB93'} />
-					) : (
-						<StatusBar style="dark" backgroundColor={'#16DB93'} />
-					)} */}
-
 					<View
 						style={{
 							flex: 1,
@@ -141,66 +126,18 @@ export default function App({ route, navigation }) {
 										source={require('../assets/brand.png')}
 									/>
 									<TouchableOpacity
-									// onPress={() => {
-									// 	if (darkMode) {
-									// 		saveToken('theme', 'light')
-									// 	} else {
-									// 		saveToken('theme', 'dark')
-									// 	}
-									// 	setDarkMode(!darkMode)
-									// }}
+										onPress={() => navigation.navigate('Profile')}
 									>
-										{darkMode ? (
-											<View
-												style={{
-													height: 30,
-													width: 30,
-													display: 'flex',
-													justifyContent: 'center',
-													alignItems: 'center',
-													backgroundColor: '#666666',
-													marginBottom: 8,
-													borderRadius: 4
-												}}
-											>
-												<Image
-													style={{
-														height: 15,
-														width: 15
-													}}
-													source={require('../assets/sun.png')}
-												/>
-											</View>
-										) : (
-											<View
-												style={
-													{
-														// opacity: 0.75,
-														// height: 30,
-														// width: 30,
-														// display: 'flex',
-														// justifyContent: 'center',
-														// alignItems: 'center',
-														// backgroundColor: '#eaeaea',
-														// marginBottom: 8,
-														// borderRadius: 4
-													}
-												}
-											>
-												<Image
-													style={{
-														height: 40,
-														width: 40,
-														borderRadius: 20
-														// marginBottom: 10
-													}}
-													source={{
-														uri: 'https://arhaanbahadur.co/me.jpeg'
-													}}
-													// source={require('../assets/moon.png')}
-												/>
-											</View>
-										)}
+										<Image
+											style={{
+												height: 40,
+												width: 40,
+												borderRadius: 20
+											}}
+											source={{
+												uri: 'https://arhaanbahadur.co/me.jpeg'
+											}}
+										/>
 									</TouchableOpacity>
 								</View>
 								<Text
@@ -238,19 +175,6 @@ export default function App({ route, navigation }) {
 												}}
 											>
 												<View>
-													{/* <Image
-												style={{
-													height: wp('9%') * 5.2,
-													width: wp('16%') * 5.2,
-													// resizeMode: 'contain',
-													marginBottom: 5,
-													borderRadius: 7.5
-												}}
-												source={{
-													uri: 'https://res.cloudinary.com/arhaanb/image/upload/delhidesignfoundry.png'
-												}}
-											/> */}
-
 													<Image
 														style={{
 															height: wp('5%') * 5.2,
@@ -323,63 +247,13 @@ export default function App({ route, navigation }) {
 										style={{
 											fontSize: 14,
 											marginBottom: -1,
-											color: darkMode ? '#E55454' : '#cf4944',
+											color: '#cf4944',
 											fontFamily: 'HelveticaReg'
 										}}
 									>
 										Logout
 									</Text>
 								</TouchableOpacity>
-								{/* 
-						<Text
-						style={{
-							fontSize: 12,
-								fontFamily: 'HelveticaReg',
-								color: darkMode ? '#969696' : '#5a5a5a'
-							}}
-							>
-							Made with{' '}
-							<Image
-							style={{
-									height: 18,
-									width: 18
-								}}
-								source={require('../assets/heart.png')}
-								/>{' '}
-								by{' '}
-								<Text
-								onPress={() => {
-									Linking.openURL(
-										link ? link : 'https://open.spotify.com/user/arhaanb'
-										)
-									}}
-									style={{ textDecorationLine: 'underline' }}
-									>
-									Arhaan Bahadur
-									</Text>
-								</Text> */}
-
-								{/* <Text
-							style={{
-								fontSize: 10,
-								fontFamily: 'HelveticaReg',
-								color: darkMode ? '#787878' : '#5a5a5a',
-								marginTop: 15
-							}}
-							>
-							v{appdata?.expo?.version ? appdata?.expo?.version : '0.0.0'}{' '}
-							Spotivity
-							</Text>
-							<Text
-							style={{
-								fontSize: 10,
-								fontFamily: 'HelveticaReg',
-								color: darkMode ? '#787878' : '#5a5a5a',
-								marginTop: 0
-							}}
-							>
-							This app is not affiliated with Spotify
-						</Text> */}
 							</View>
 						</View>
 					</View>
