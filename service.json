@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pc-api-6924032057081055447-144",
+  "private_key_id": "11d09418c8dde13ad9c206ded9368472ddccd7c0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC92qHPXpzNA/RV\nqypgC2K89EcLHq86gsTfFfpasYLXOYMs0MnMhD3ItEMWqhWL3QJJ6lC/Y8PXMQaH\nF8RuvQX4uGQ72TZNkO72b6lRFv6yQt8NPuH7aWAw4ySg1kLaFbK85ZSFjyatIzBM\n4sEPCGqONbiUQ72la4Bc30sEEOL6qE7Um9zZTd6b+fP6cd/sIe92cC123ZxKFGas\n2wv+InPYmtyLw7NkG3A1lfJdBrDlg/tXFxw/KNrWbrFv2T4tpQSSTAJv5BzKMkYj\nykRhfGVinc6dVqbsQr7LA7VNCOESshiRc9Rl3imN8YM7u/oTYCoEGGIInKqCwvNU\nONHnOXCdAgMBAAECggEAA0zf57YuFR1Gu8+CKNHB2WWIr5+MrcB0sikUZUu1Kc8g\n4eBORb0dwtWpXeU+gyQoJEdLuIwALUc3pRULb95e0nRIH8c2m7ITiVqnD5cN/eTO\nMlF/xapPBwKH0jjvSBG8/e4ivxCePD/CmO+PKhb8HTU/XGpyC0RbYqHqEKvHelJ3\nfs59jFHdLS9LZ4CHewm4CVUnCLbHzJ8ajiJQZXpm0RxNsi4rBCDz+Js3+sADGl8Z\nuwTE2hzZCv3oCIUYmS7VHaOLSMz6Q05sfGu523FQGZ/MRKJauPukxRg+wPP8T4Km\nz+bRd47i+vICS+Q5u9MALle1QDtJO/eONrHpWN0zaQKBgQDtXS3F4lCnD2+i3G1Y\nVBJtJanc04iarGh/KnbyHBz0YESleiZACoQjv0VM2IG9rFlSjSFQaALc0yW8S6dc\nr+6lU1nJyZYQ4M73HdeXUD7nNpE1EnNXTGmfbUr2SEyoaOqIUYC5I4ZPuQccCTI8\nYNF1JDN9oUYAaymGYj7sevyPFQKBgQDMworUNm7dUTk7paUIOZTp1rcQkdiu1SPq\nYIukoaGpJqC/650RwmzAAWxvXqhf89qyMy4r0V+YXjD21+CCbrqEqponC3o+aE6D\neLoLA5tpZo1+phs9WN69Vt1aBfk6EYwq8z0CWB3eBs2yxzwFCBAU6rSApXZbKZEu\n3oK8Eg/9aQKBgQDk4bPQm/F/lj/kwD7kLHV0MBxCZuvTkipVbUIzJe65qtam5klZ\n+Yn/2mFdv2wj1LxxAMu99/3CqAw8LItesfsiCmSLUspUziJkYa9RJjzxwUl17quv\n42v6Im5lW8QnpLt65XSFkf7igx2a6Dc7x3RSS60nGEsi/jKVdckNSW6eHQKBgQCg\nECf0ckTCD399CCT1RAYLsgRTGJ/ZM9aqniQrYwp7ry2UObwEKQdYJQS+HrHiqD66\ndNXP/REMi/0cyW7Ap4x4ruBoS0mZRXKyxYoxl/VCNJ/BdFnw3+rm+eN5Pxgvc44t\n+Q0lKvrWGF1uNt7NVBs2Lq9BrZbS9rB+ggSSvk/vmQKBgQDdBJfQfwxBHJPmuccB\ncP6sBvOpzDokL7zZk8yW/9rk+sN2WLw1rjse/yKZ+Art5NUBHfxjTHILjFQgUDlx\nyB+ZfXTMFuAzfJnnCzUJ/47XIMsb2XtQQkdB1KmLmNt01fx58pUYqqN6bNTK2lac\nk4y77KnqfqGK9g76yQ0xUFdV1Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "expo-spotivity-app@pc-api-6924032057081055447-144.iam.gserviceaccount.com",
+  "client_id": "105810307008099036355",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/expo-spotivity-app%40pc-api-6924032057081055447-144.iam.gserviceaccount.com"
+}

@@ -1,0 +1,35 @@
+{
+	"expo": {
+		"name": "PayOut",
+		"slug": "payout",
+		"scheme": "payout",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"privacy": "public",
+		"icon": "./assets/app/icon.png",
+		"splash": {
+			"image": "./assets/app/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"owner": "arhaanb",
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": false,
+			"bundleIdentifier": "com.arhaanb.payout",
+			"buildNumber": "1.0.0"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/app/adaptive-icon.png",
+				"backgroundColor": "#FFFFFF"
+			},
+			"package": "com.arhaanb.payout",
+			"permissions": ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"],
+			"versionCode": 1
+		},
+		"web": {
+			"favicon": "./assets/icon.png"
+		}
+	}
+}
