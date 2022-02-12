@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		backgroundColor: '#fff'
 	},
+	onboardcontainer: {
+		marginHorizontal: 55
+	},
 	scrollcontainer: {
 		marginHorizontal: 25,
 		marginTop: Platform.OS === 'android' ? 20 : 0,

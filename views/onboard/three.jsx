@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
 import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native'
-import global from '../styles'
-import { getToken } from '../tokenFunc'
+import global from '../../styles'
+import { getToken } from '../../tokenFunc'
 import {
 	widthPercentageToDP as wp,
 	heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import { useIsFocused } from '@react-navigation/native'
+import { StatusBar } from 'expo-status-bar'
 // import Onboarding from 'react-native-onboarding-swiper'
-// import { StatusBar } from 'expo-status-bar'
+import AutoHeightImage from 'react-native-auto-height-image'
+import Onboard from '../../assets/onboard/3.png'
 
 export default function App({ route, navigation }) {
 	const isFocused = useIsFocused()
@@ -31,7 +33,10 @@ export default function App({ route, navigation }) {
 				backgroundColor: '#0AD98D'
 			}}
 		>
-			{/* <StatusBar style="dark" backgroundColor={'#0AD98D'} /> */}
+			<StatusBar style="dark" backgroundColor={'#0AD98D'} />
+			<View style={{ position: 'absolute', top: 0 }}>
+				<AutoHeightImage width={wp('100%')} source={Onboard} />
+			</View>
 			<View
 				style={[
 					global.onboardcontainer,
@@ -44,14 +49,37 @@ export default function App({ route, navigation }) {
 					}
 				]}
 			>
-				<Image
+				{/* <Image
 					style={{
 						height: 236 * wp('0.25%'),
 						width: 214 * wp('0.25%'),
-						marginTop: hp('15%')
+						marginTop: 70
 					}}
-					source={require('../assets/onboard/1.png')}
-				/>
+					source={require('../../assets/onboard/2.png')}
+				/> */}
+				<View style={{ position: 'absolute', bottom: hp('5%') }}>
+					<Text
+						style={{
+							fontSize: 30,
+							fontFamily: 'HelveticaBold',
+							color: '#020827',
+							marginBottom: 5
+						}}
+					>
+						Get funded the{'\n'}way you want.
+					</Text>
+					<Text
+						style={{
+							fontSize: 15,
+							fontFamily: 'HelveticaReg',
+							color: '#020827',
+							lineHeight: 20.8
+						}}
+					>
+						With our up-to date trade policies, you can now recieve funding
+						through wire-transfers, or even crypto!
+					</Text>
+				</View>
 			</View>
 			<View
 				style={[
@@ -66,12 +94,12 @@ export default function App({ route, navigation }) {
 			>
 				<TouchableOpacity
 					onPress={() => {
-						navigation.navigate('Two')
+						navigation.navigate('Login')
 					}}
 				>
 					<Image
 						style={{ height: 406.67 * 0.135, width: 610 * 0.135 }}
-						source={require('../assets/onboard/button.png')}
+						source={require('../../assets/onboard/button.png')}
 					/>
 				</TouchableOpacity>
 			</View>

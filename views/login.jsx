@@ -30,7 +30,7 @@ export default function App({ route, navigation }) {
 	const getInitialData = async () => {
 		await getToken('spotifyAccessToken').then((token) => {
 			if (token?.length > 0) {
-				navigation.navigate('Activity')
+				navigation.navigate('Profile')
 			}
 		})
 	}
@@ -188,7 +188,7 @@ export default function App({ route, navigation }) {
 									.then((res) => {
 										console.log(res.data)
 										saveToken('accessToken', res.data.accessToken)
-										navigation.navigate('Activity')
+										navigation.navigate('Profile')
 									})
 									.catch((err) => {
 										console.log(err.message)
