@@ -4,8 +4,9 @@ import {
 	widthPercentageToDP as wp,
 	heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
+import * as Linking from 'expo-linking'
 
-export default function App({ style }) {
+export default function App({ style, icon, name, tagline, page, mainlink }) {
 	return (
 		<View
 			style={[
@@ -23,13 +24,15 @@ export default function App({ style }) {
 			>
 				<Image
 					style={{
-						height: 50,
-						width: 50,
+						height: 52.5,
+						width: 52.5,
 						borderRadius: 7.5,
 						marginRight: 10
 					}}
 					source={{
-						uri: 'https://cdn-images-1.medium.com/max/1600/1*SkFEBcaoea9WXIdQg2GsTw.png'
+						uri: icon
+							? icon
+							: 'https://cdn-images-1.medium.com/max/1600/1*SkFEBcaoea9WXIdQg2GsTw.png'
 					}}
 				/>
 				<View>
@@ -40,17 +43,21 @@ export default function App({ style }) {
 							color: '#222'
 						}}
 					>
-						Delhi Design Foundry
+						{name ? name : 'Company Name'}
 					</Text>
 					<Text
 						style={{
 							fontSize: 12,
 							fontFamily: 'HelveticaBold',
 							color: '#222',
-							opacity: 0.5
+							opacity: 0.5,
+							width: wp('75%') - 70,
+							lineHeight: 16
+							// borderColor: 'green',
+							// borderWidth: 1
 						}}
 					>
-						Invested on 06/02/2022
+						{tagline ? tagline : 'Company Tagline'}
 					</Text>
 				</View>
 			</View>
@@ -119,6 +126,48 @@ export default function App({ style }) {
 					</Text>
 				</View>
 			</View>
+
+			{page == 'discover' ? (
+				<View>
+					{/* <Text>yo</Text> */}
+					{mainlink ? (
+						<TouchableOpacity
+							onPress={() => Linking.openURL(mainlink)}
+							style={{
+								paddingVertical: 15,
+								paddingHorizontal: 20,
+								backgroundColor: '#eaeaea',
+								borderRadius: 7.5,
+								marginTop: 12.5,
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'space-between',
+								alignItems: 'center'
+							}}
+						>
+							<Text
+								style={{
+									fontSize: 14,
+									fontFamily: 'HelveticaReg',
+									color: '#222'
+								}}
+							>
+								Website
+							</Text>
+							<Text
+								style={{
+									fontSize: 14,
+									fontFamily: 'HelveticaReg',
+									color: '#222',
+									marginRight: 10
+								}}
+							>
+								&rarr;
+							</Text>
+						</TouchableOpacity>
+					) : null}
+				</View>
+			) : null}
 		</View>
 	)
 }

@@ -22,6 +22,7 @@ import { useIsFocused } from '@react-navigation/native'
 import appdata from '../app.json'
 import { StatusBar } from 'expo-status-bar'
 import NavLayout from './layouts/nav'
+import Header from './components/header.jsx'
 
 export default function App({ route, navigation }) {
 	const [refreshing, setRefreshing] = React.useState(false)
@@ -75,7 +76,6 @@ export default function App({ route, navigation }) {
 
 	// useEffect(() => {
 	// 	getInitialData()
-	// 	// getLinkData()
 	// }, [isFocused])
 
 	useEffect(() => {
@@ -106,12 +106,6 @@ export default function App({ route, navigation }) {
 					showsVerticalScrollIndicator={false}
 					style={{ backgroundColor: '#F4F9F5' }}
 				>
-					{/* {darkMode ? (
-				<StatusBar style="light" backgroundColor={'#16DB93'} />
-				) : (
-					<StatusBar style="dark" backgroundColor={'#16DB93'} />
-				)} */}
-
 					<View
 						style={{
 							flex: 1,
@@ -127,37 +121,7 @@ export default function App({ route, navigation }) {
 									paddingHorizontal: 35
 								}}
 							>
-								<View
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-										justifyContent: 'space-between',
-										alignItems: 'center'
-									}}
-								>
-									<Image
-										style={{
-											height: 127 * 0.2,
-											width: 524 * 0.2,
-											marginBottom: 5
-										}}
-										source={require('../assets/brand.png')}
-									/>
-									<TouchableOpacity
-										onPress={() => navigation.navigate('Profile')}
-									>
-										<Image
-											style={{
-												height: 40,
-												width: 40,
-												borderRadius: 20
-											}}
-											source={{
-												uri: 'https://arhaanbahadur.co/me.jpeg'
-											}}
-										/>
-									</TouchableOpacity>
-								</View>
+								<Header navigation={navigation} />
 								<Text
 									style={{
 										fontSize: 30,

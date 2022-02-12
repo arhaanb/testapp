@@ -28,7 +28,7 @@ export default function App({ route, navigation }) {
 	}, [isFocused])
 
 	const getInitialData = async () => {
-		await getToken('spotifyAccessToken').then((token) => {
+		await getToken('accessToken').then((token) => {
 			if (token?.length > 0) {
 				navigation.navigate('Profile')
 			}

@@ -16,12 +16,9 @@ import axios from 'axios'
 import { getToken, deleteTokens, saveToken } from '../tokenFunc'
 import * as Linking from 'expo-linking'
 import Loading from './loading'
-// import { frnddata } from '../customData.js'
-// import * as Clipboard from 'expo-clipboard'
-import { useIsFocused } from '@react-navigation/native'
-import appdata from '../app.json'
-import { StatusBar } from 'expo-status-bar'
 import NavLayout from './layouts/nav'
+import InvestCard from './components/invested.jsx'
+import Header from './components/header.jsx'
 
 export default function App({ route, navigation }) {
 	const [refreshing, setRefreshing] = React.useState(false)
@@ -93,6 +90,7 @@ export default function App({ route, navigation }) {
 					showsHorizontalScrollIndicator={false}
 					showsVerticalScrollIndicator={false}
 					style={{ backgroundColor: '#F4F9F5' }}
+					overScrollMode={'never'}
 				>
 					<View
 						style={{
@@ -109,37 +107,7 @@ export default function App({ route, navigation }) {
 									paddingHorizontal: 35
 								}}
 							>
-								<View
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-										justifyContent: 'space-between',
-										alignItems: 'center'
-									}}
-								>
-									<Image
-										style={{
-											height: 127 * 0.2,
-											width: 524 * 0.2,
-											marginBottom: 5
-										}}
-										source={require('../assets/brand.png')}
-									/>
-									<TouchableOpacity
-										onPress={() => navigation.navigate('Profile')}
-									>
-										<Image
-											style={{
-												height: 40,
-												width: 40,
-												borderRadius: 20
-											}}
-											source={{
-												uri: 'https://arhaanbahadur.co/me.jpeg'
-											}}
-										/>
-									</TouchableOpacity>
-								</View>
+								<Header navigation={navigation} />
 								<Text
 									style={{
 										fontSize: 30,
@@ -156,7 +124,7 @@ export default function App({ route, navigation }) {
 										lineHeight: 23,
 										fontFamily: 'HelveticaReg',
 										color: '#AFAFAF',
-										marginBottom: 30
+										marginBottom: 15
 									}}
 								>
 									Discover new startups to invest in.
@@ -164,7 +132,19 @@ export default function App({ route, navigation }) {
 								{friendData.map((c) => {
 									return (
 										<View key={c.username}>
-											<TouchableOpacity
+											{/* <Text>{JSON.stringify(c?.video)}</Text> */}
+											<View style={{ marginBottom: 15 }}>
+												<InvestCard
+													icon={c?.icon ? c?.icon : null}
+													name={c?.name}
+													tagline={c?.tagline}
+													page={'discover'}
+													mainlink={
+														c?.website || c?.pitchdeck || c?.video || null
+													}
+												/>
+											</View>
+											{/* <TouchableOpacity
 												style={{
 													borderColor: '#0AD98D',
 													padding: 20,
@@ -179,7 +159,6 @@ export default function App({ route, navigation }) {
 														style={{
 															height: wp('5%') * 5.2,
 															width: wp('5%') * 5.2,
-															// resizeMode: 'contain',
 															marginBottom: 5,
 															borderRadius: 7.5
 														}}
@@ -201,7 +180,6 @@ export default function App({ route, navigation }) {
 														marginTop: 10
 													}}
 												>
-													{/* {JSON.stringify(c)} */}
 													{c?.name}
 												</Text>
 												<Text
@@ -213,7 +191,6 @@ export default function App({ route, navigation }) {
 														opacity: 0.5
 													}}
 												>
-													{/* {JSON.stringify(c?.icon)} */}
 													{c?.tagline}
 												</Text>
 
@@ -227,33 +204,14 @@ export default function App({ route, navigation }) {
 														opacity: 0.5
 													}}
 												>
-													{/* {JSON.stringify(c)} */}
 													{c?.investment?.goal
 														? `Goal: $${c?.investment?.goal}`
 														: null}
 												</Text>
-											</TouchableOpacity>
+											</TouchableOpacity> */}
 										</View>
 									)
 								})}
-
-								<TouchableOpacity
-									onPress={() => {
-										deleteTokens()
-										navigation.navigate('Home')
-									}}
-								>
-									<Text
-										style={{
-											fontSize: 14,
-											marginBottom: -1,
-											color: '#cf4944',
-											fontFamily: 'HelveticaReg'
-										}}
-									>
-										Logout
-									</Text>
-								</TouchableOpacity>
 							</View>
 						</View>
 					</View>
