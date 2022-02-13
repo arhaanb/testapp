@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar'
 
 //routes
 //  Onboarding
-import One from './views/home'
+import Home from './views/home'
 import Two from './views/onboard/two'
 import Three from './views/onboard/three'
 import Login from './views/login'
@@ -41,7 +41,7 @@ function App() {
 							}}
 						>
 							{/* onboarding screens */}
-							<Stack.Screen name="Home" component={One} />
+							<Stack.Screen name="Home" component={Home} />
 							<Stack.Screen name="Two" component={Two} />
 							<Stack.Screen name="Three" component={Three} />
 							<Stack.Screen name="Login" component={Login} />
