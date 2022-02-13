@@ -43,9 +43,10 @@ export default function App({ route, navigation }) {
 				}
 			})
 			.then((res) => {
+				// console.log(res.data)
 				setFriendData(res.data)
 				setLoading(false)
-				console.log('data fetched')
+				// console.log('data fetched')
 			})
 			.catch(async (err) => {
 				console.log(err.message)
@@ -199,7 +200,12 @@ export default function App({ route, navigation }) {
 											color: '#fff'
 										}}
 									>
-										$40,000
+										$
+										{friendData?.totalinv
+											? friendData?.totalinv
+													.toString()
+													.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+											: 0}
 									</Text>
 								</View>
 							</ImageBackground>
@@ -281,8 +287,14 @@ export default function App({ route, navigation }) {
 																	: 0
 														}}
 													>
+														{/* <Text>
+															{JSON.stringify(friendData?.compids[index].name)}
+														</Text> */}
 														<InvestCard
-															name={c?.companyname || 'Company Name'}
+															name={
+																friendData?.compids[index]?.name ||
+																'Company Name'
+															}
 															tagline={
 																friendData?.compids[index]?.tagline ||
 																'This is a tagline.'
@@ -357,63 +369,60 @@ export default function App({ route, navigation }) {
 									showsVerticalScrollIndicator={false}
 									overScrollMode={'never'}
 								>
-									<View
-										style={{
-											display: 'flex',
-											flexDirection: 'row',
-											paddingRight: 35
-										}}
-									>
-										{friendData?.companies?.length > 0 ? (
-											<View>
-												{friendData?.companies?.map((c, index) => {
-													return (
-														<View
-															key={index}
-															style={{
-																marginRight:
-																	index == 0 &&
-																	friendData?.companies.length !== 1
-																		? 15
-																		: 0
-															}}
-														>
-															{/* <Text>{JSON.stringify(c.investment)}</Text> */}
-															<InvestCard
-																name={c?.name || 'Company Name'}
-																tagline={c?.tagline || 'This is a tagline.'}
-																icon={c?.icon}
-																goal={c?.investment?.goal}
-																equity={
-																	(c?.investment?.current /
-																		c?.investment?.goal) *
-																	100
-																}
-															/>
-														</View>
-													)
-												})}
-											</View>
-										) : (
-											<View
+									{friendData?.companies?.length > 0 ? (
+										<View
+											style={{
+												display: 'flex',
+												flexDirection: 'row',
+												paddingRight: 35
+											}}
+										>
+											{friendData?.companies?.map((c, index) => {
+												return (
+													<View
+														key={index}
+														style={{
+															marginRight:
+																index == 0 && friendData?.companies.length !== 1
+																	? 15
+																	: 0
+														}}
+													>
+														{/* <Text>{JSON.stringify(c.investment)}</Text> */}
+														<InvestCard
+															name={c?.name || 'Company Name'}
+															tagline={c?.tagline || 'This is a tagline.'}
+															icon={c?.icon}
+															goal={c?.investment?.goal}
+															equity={
+																(parseFloat(c?.investment?.current) /
+																	parseFloat(c?.investment?.goal)) *
+																100
+															}
+														/>
+													</View>
+												)
+											})}
+										</View>
+									) : (
+										<View
+											style={{
+												padding: 20,
+												backgroundColor: 'white',
+												borderRadius: 10
+											}}
+										>
+											<Text
 												style={{
-													padding: 20,
-													backgroundColor: 'white',
-													borderRadius: 10
+													fontSize: 15,
+													color: '#222',
+													fontFamily: 'HelveticaReg'
 												}}
 											>
-												<Text
-													style={{
-														fontSize: 15,
-														color: '#222',
-														fontFamily: 'HelveticaReg'
-													}}
-												>
-													No companies found
-												</Text>
-											</View>
-										)}
-									</View>
+												No companies found
+											</Text>
+										</View>
+									)}
 								</ScrollView>
 							</View>
 						)}

@@ -22,7 +22,6 @@ import Header from './components/header.jsx'
 
 export default function App({ route, navigation }) {
 	const [refreshing, setRefreshing] = React.useState(false)
-	const [link, setLink] = React.useState(false)
 	const [loading, setLoading] = React.useState(true)
 
 	const onRefresh = React.useCallback(() => {
@@ -46,7 +45,7 @@ export default function App({ route, navigation }) {
 			.then((res) => {
 				setFriendData(res.data)
 				setLoading(false)
-				console.log('data fetched')
+				// console.log('data fetched')
 			})
 			.catch(async (err) => {
 				console.log(err.message)

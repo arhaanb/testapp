@@ -51,9 +51,8 @@ export default function App({ route, navigation }) {
 			})
 			.then((res) => {
 				setChatData(res.data)
-				console.log(res.data)
 				setLoading(false)
-				console.log('data fetched')
+				// console.log('data fetched')
 			})
 			.catch(async (err) => {
 				console.log(err.message)
