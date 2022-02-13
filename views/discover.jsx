@@ -17,7 +17,7 @@ import { getToken, deleteTokens, saveToken } from '../tokenFunc'
 import * as Linking from 'expo-linking'
 import Loading from './loading'
 import NavLayout from './layouts/nav'
-import InvestCard from './components/invested.jsx'
+import InvestCard from './components/discovercard.jsx'
 import Header from './components/header.jsx'
 
 export default function App({ route, navigation }) {
@@ -55,12 +55,6 @@ export default function App({ route, navigation }) {
 				setLoading(false)
 				navigation.navigate('Home')
 			})
-	}
-
-	function getLinkData() {
-		axios.get('https://spotivity.vercel.app/api/spotify/link').then((link) => {
-			setLink(link.data.link)
-		})
 	}
 
 	useEffect(() => {
@@ -129,89 +123,34 @@ export default function App({ route, navigation }) {
 								>
 									Discover new startups to invest in.
 								</Text>
-								{friendData.map((c) => {
-									return (
-										<View key={c.username}>
-											{/* <Text>{JSON.stringify(c?.video)}</Text> */}
-											<View style={{ marginBottom: 15 }}>
-												<InvestCard
-													icon={c?.icon ? c?.icon : null}
-													name={c?.name}
-													tagline={c?.tagline}
-													page={'discover'}
-													mainlink={
-														c?.website || c?.pitchdeck || c?.video || null
-													}
-												/>
-											</View>
-											{/* <TouchableOpacity
-												style={{
-													borderColor: '#0AD98D',
-													padding: 20,
-													paddingBottom: 0,
-													borderRadius: 10,
-													borderWidth: 1,
-													marginBottom: 25
-												}}
-											>
-												<View>
-													<Image
-														style={{
-															height: wp('5%') * 5.2,
-															width: wp('5%') * 5.2,
-															marginBottom: 5,
-															borderRadius: 7.5
-														}}
-														source={{
-															uri:
-																c?.icon ||
-																'https://cdn-images-1.medium.com/max/1600/1*SkFEBcaoea9WXIdQg2GsTw.png'
-														}}
-													/>
-												</View>
-												<Text
-													style={{
-														fontSize: 18,
-														lineHeight: 23,
-														fontFamily: 'HelveticaBold',
-														color: '#2a2a2a',
-														opacity: 0.8,
-														marginBottom: 0,
-														marginTop: 10
-													}}
-												>
-													{c?.name}
-												</Text>
-												<Text
-													style={{
-														fontSize: 14,
-														lineHeight: 23,
-														fontFamily: 'HelveticaReg',
-														color: '#2a2a2a',
-														opacity: 0.5
-													}}
-												>
-													{c?.tagline}
-												</Text>
 
-												<Text
-													style={{
-														fontSize: 14,
-														lineHeight: 23,
-														fontFamily: 'HelveticaReg',
-														color: '#0AD98D',
-														marginBottom: 15,
-														opacity: 0.5
-													}}
-												>
-													{c?.investment?.goal
-														? `Goal: $${c?.investment?.goal}`
-														: null}
-												</Text>
-											</TouchableOpacity> */}
-										</View>
-									)
-								})}
+								{loading ? (
+									<View style={{ height: hp('50%') }}>
+										<Loading />
+									</View>
+								) : (
+									<View>
+										{friendData.map((c) => {
+											return (
+												<View key={c.username}>
+													{/* <Text>{JSON.stringify(c?.investment)}</Text> */}
+													<View style={{ marginBottom: 15 }}>
+														<InvestCard
+															icon={c?.icon ? c?.icon : null}
+															name={c?.name}
+															tagline={c?.tagline}
+															page={'discover'}
+															mainlink={
+																c?.website || c?.pitchdeck || c?.video || null
+															}
+															goal={c?.investment}
+														/>
+													</View>
+												</View>
+											)
+										})}
+									</View>
+								)}
 							</View>
 						</View>
 					</View>

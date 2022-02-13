@@ -28,7 +28,6 @@ export default function App({ route, navigation }) {
 	const [refreshing, setRefreshing] = React.useState(false)
 	const [link, setLink] = React.useState(false)
 	const [loading, setLoading] = React.useState(true)
-	const [darkMode, setDarkMode] = React.useState(false)
 
 	const arrtest = [0, 1, 2]
 
@@ -41,19 +40,18 @@ export default function App({ route, navigation }) {
 		getLinkData()
 	}, [])
 
-	const [friendData, setFriendData] = useState([])
+	const [chatData, setChatData] = useState([])
 
 	function fetchActivity(token) {
 		axios
-			.get('https://untitledarhnhack.herokuapp.com/api/discover', {
+			.get('https://untitledarhnhack.herokuapp.com/api/threads', {
 				headers: {
 					'x-access-token': token
 				}
 			})
 			.then((res) => {
-				setFriendData(res.data)
-				// setFriendData(frnddata)
-				// Clipboard.setString(JSON.stringify(res.data.friends))
+				setChatData(res.data)
+				console.log(res.data)
 				setLoading(false)
 				console.log('data fetched')
 			})
@@ -126,7 +124,7 @@ export default function App({ route, navigation }) {
 									style={{
 										fontSize: 30,
 										fontFamily: 'HelveticaBold',
-										color: darkMode ? '#fff' : '#222',
+										color: '#222',
 										marginTop: 10
 									}}
 								>
@@ -144,179 +142,119 @@ export default function App({ route, navigation }) {
 									Here are your text threads.
 								</Text>
 
-								<View>
-									{arrtest.map((msg, index) => {
-										return (
-											<TouchableOpacity
-												key={index}
-												style={{
-													display: 'flex',
-													flexDirection: 'row',
-													justifyContent: 'space-between',
-													alignItems: 'center',
-													paddingVertical: 20,
-													paddingHorizontal: 20,
-													backgroundColor: '#fff',
-													borderTopEndRadius: index + 1 == 1 ? 10 : 0,
-													borderTopStartRadius: index + 1 == 1 ? 10 : 0,
-													borderBottomStartRadius:
-														index + 1 == arrtest.length ? 10 : 0,
-													borderBottomEndRadius:
-														index + 1 == arrtest.length ? 10 : 0,
-													borderBottomColor: '#eaeaea',
-													borderBottomWidth:
-														index + 1 == arrtest.length ? 0 : 0.5,
-													borderTopColor: '#eaeaea',
-													borderTopWidth: index + 1 == 1 ? 0 : 0.5
-												}}
-											>
-												<View
-													style={{
-														display: 'flex',
-														flexDirection: 'row',
-														justifyContent: 'flex-start',
-														alignItems: 'center'
-													}}
-												>
-													<Image
-														style={{
-															height: 50,
-															width: 50,
-															// resizeMode: 'contain',
-															borderRadius: 1000,
-															marginRight: 15
-														}}
-														source={{
-															uri: 'https://cdn-images-1.medium.com/max/1600/1*SkFEBcaoea9WXIdQg2GsTw.png'
-														}}
-													/>
-													<View>
-														<Text
+								{loading ? (
+									<View style={{ height: hp('50%') }}>
+										<Loading />
+									</View>
+								) : (
+									<View>
+										{chatData?.threads?.length > 0 ? (
+											<View>
+												{chatData?.threads?.map((msg, index) => {
+													return (
+														<TouchableOpacity
+															key={index}
 															style={{
-																fontSize: 17,
-																fontFamily: 'HelveticaBold',
-																color: '#222'
+																display: 'flex',
+																flexDirection: 'row',
+																justifyContent: 'space-between',
+																alignItems: 'center',
+																paddingVertical: 20,
+																paddingHorizontal: 20,
+																backgroundColor: '#fff',
+																borderTopEndRadius: index + 1 == 1 ? 10 : 0,
+																borderTopStartRadius: index + 1 == 1 ? 10 : 0,
+																borderBottomStartRadius:
+																	index + 1 == chatData.threads.length ? 10 : 0,
+																borderBottomEndRadius:
+																	index + 1 == chatData.threads.length ? 10 : 0,
+																borderBottomColor: '#eaeaea',
+																borderBottomWidth:
+																	index + 1 == chatData.threads.length
+																		? 0
+																		: 0.5,
+																borderTopColor: '#eaeaea',
+																borderTopWidth: index + 1 == 1 ? 0 : 0.5
 															}}
 														>
-															Arhaan Bahadur
-														</Text>
-														<Text
-															style={{
-																fontSize: 15,
-																fontFamily: 'HelveticaBold',
-																color: '#222',
-																opacity: 0.5
-															}}
-														>
-															arhaanb
-														</Text>
-													</View>
-												</View>
-												<Text
-													style={{
-														fontSize: 17,
-														fontFamily: 'HelveticaReg',
-														color: '#7a7a7a',
-														marginRight: 10
-													}}
-												>
-													&rarr;
-												</Text>
-											</TouchableOpacity>
-										)
-									})}
-								</View>
-								{/* {friendData.map((c) => {
-									return (
-										<View key={c.username}>
-											<TouchableOpacity
+															<View
+																style={{
+																	display: 'flex',
+																	flexDirection: 'row',
+																	justifyContent: 'flex-start',
+																	alignItems: 'center'
+																}}
+															>
+																<Image
+																	style={{
+																		height: 50,
+																		width: 50,
+																		borderRadius: 1000,
+																		marginRight: 15,
+																		borderWidth: chatData?.users[index]?.image
+																			? 0
+																			: 1,
+																		borderColor: 'lightgreen'
+																	}}
+																	source={{
+																		uri: chatData?.users[index]?.image
+																			? chatData?.users[index]?.image
+																			: 'https://t3.ftcdn.net/jpg/00/64/67/80/360_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg'
+																	}}
+																/>
+																<View>
+																	<Text
+																		style={{
+																			fontSize: 17,
+																			fontFamily: 'HelveticaBold',
+																			color: '#222'
+																		}}
+																	>
+																		{chatData?.users[index]?.fullname || 'Name'}
+																	</Text>
+																	<Text
+																		style={{
+																			fontSize: 15,
+																			fontFamily: 'HelveticaBold',
+																			color: '#222',
+																			opacity: 0.5
+																		}}
+																	>
+																		{chatData?.users[index]?.username ||
+																			'username'}
+																	</Text>
+																</View>
+															</View>
+															<Text
+																style={{
+																	fontSize: 17,
+																	fontFamily: 'HelveticaReg',
+																	color: '#7a7a7a',
+																	marginRight: 10
+																}}
+															>
+																&rarr;
+															</Text>
+														</TouchableOpacity>
+													)
+												})}
+											</View>
+										) : (
+											<Text
 												style={{
-													borderColor: '#0AD98D',
-													padding: 20,
-													paddingBottom: 0,
-													borderRadius: 10,
-													borderWidth: 1,
-													marginBottom: 25
+													fontSize: 17,
+													fontFamily: 'HelveticaBold',
+													color: '#222',
+													opacity: 0.75,
+													lineHeight: 25
 												}}
 											>
-												<View>
-
-													<Image
-														style={{
-															height: wp('5%') * 5.2,
-															width: wp('5%') * 5.2,
-															// resizeMode: 'contain',
-															marginBottom: 5,
-															borderRadius: 7.5
-														}}
-														source={{
-															uri:
-																c?.icon ||
-																'https://cdn-images-1.medium.com/max/1600/1*SkFEBcaoea9WXIdQg2GsTw.png'
-														}}
-													/>
-												</View>
-												<Text
-													style={{
-														fontSize: 18,
-														lineHeight: 23,
-														fontFamily: 'HelveticaBold',
-														color: '#2a2a2a',
-														opacity: 0.8,
-														marginBottom: 0,
-														marginTop: 10
-													}}
-												>
-													{c?.name}
-												</Text>
-												<Text
-													style={{
-														fontSize: 14,
-														lineHeight: 23,
-														fontFamily: 'HelveticaReg',
-														color: '#2a2a2a',
-														opacity: 0.5
-													}}
-												>
-													{c?.tagline}
-												</Text>
-
-												<Text
-													style={{
-														fontSize: 14,
-														lineHeight: 23,
-														fontFamily: 'HelveticaReg',
-														color: '#0AD98D',
-														marginBottom: 15,
-														opacity: 0.5
-													}}
-												>
-													{c?.investment?.goal
-														? `Goal: $${c?.investment?.goal}`
-														: null}
-												</Text>
-											</TouchableOpacity>
-										</View>
-									)
-								})} */}
-
-								{/* <TouchableOpacity
-									onPress={() => {
-										deleteTokens()
-										navigation.navigate('Home')
-									}}
-								>
-									<Text
-										style={{
-											fontSize: 14,
-											marginBottom: -1,
-											color: darkMode ? '#E55454' : '#cf4944',
-											fontFamily: 'HelveticaReg'
-										}}
-									>
-										Logout
-									</Text>
-								</TouchableOpacity> */}
+												No threads available. Start a chat and it will appear
+												here.
+											</Text>
+										)}
+									</View>
+								)}
 							</View>
 						</View>
 					</View>

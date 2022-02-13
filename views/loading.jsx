@@ -12,23 +12,16 @@ export default function App({
 	style,
 	innerStyle,
 	loadText,
-	showLongindicator,
-	darkMode
+	showLongindicator
 }) {
 	return (
-		<View
-			style={[
-				styles.container,
-				style ? style : null,
-				{ backgroundColor: darkMode ? '#191919' : '#fff' }
-			]}
-		>
+		<View style={[styles.container, style ? style : null]}>
 			<ActivityIndicator
 				size="large"
-				color="green"
+				color="lightgreen"
 				style={innerStyle ? innerStyle : null}
 			/>
-			<Text style={[styles.text, { color: darkMode ? '#fff' : '#222' }]}>
+			<Text style={[styles.text, { color: '#222' }]}>
 				{loadText || 'Just a sec'}
 			</Text>
 			{showLongindicator ? (
@@ -40,7 +33,7 @@ export default function App({
 								opacity: 0.5,
 								marginTop: 0,
 								fontSize: 12,
-								color: darkMode ? '#fff' : '#222'
+								color: '#222'
 							}
 						]}
 					>
@@ -55,7 +48,6 @@ export default function App({
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
